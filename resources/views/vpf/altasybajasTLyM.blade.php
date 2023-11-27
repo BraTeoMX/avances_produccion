@@ -75,7 +75,13 @@
                         {{-- Tabla de Team Leaders --}}
                         <div>
                             <h2>Team Leaders</h2>
-                            <table BORDER>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                {{-- Campo de búsqueda --}}
+                                <div>
+                                    <input type="text" id="searchInput1" onkeyup="filterTableTeamLeaders()" placeholder="Buscar por Team Leader">
+                                </div>
+                            </div>
+                            <table BORDER id="myTable1">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -119,7 +125,13 @@
                         {{-- Tabla de Módulos --}}
                         <div>
                             <h2>Módulos</h2>
-                            <table BORDER>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                {{-- Campo de búsqueda --}}
+                                <div>
+                                    <input type="text" id="searchInput2" onkeyup="filterTableModulos()" placeholder="Buscar módulo...">
+                                </div>
+                            </div>
+                            <table BORDER id="myTable2">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -156,8 +168,49 @@
             </div>
         </div>
     </div>
+    <script>
+        function filterTableTeamLeaders() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput1");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable1");
+        tr = table.getElementsByTagName("tr");
 
-    
+        for (i = 1; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1]; // Cambia el índice si es necesario
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function filterTableModulos() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput2");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable2");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1]; // Cambia el índice si es necesario
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+       
+    </script>
     
 @endsection
 
