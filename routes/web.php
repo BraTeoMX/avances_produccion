@@ -101,6 +101,16 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('actualizarTabla', 'App\Http\Controllers\VPFController@actualizarTabla')->name('vpf.actualizarTabla');
 	Route::post('/transferir-datos', 'App\Http\Controllers\VPFController@transferirDatosDiarios')->name('transferir.datos');
 
+	Route::get('/altasybajasTLyM', 'App\Http\Controllers\VPFController@altasybajasTLyM')->name('vpf.altasybajasTLyM');
+	// Asumiendo que usas resource controllers o algo similar
+	Route::post('/team-leader/store', 'App\Http\Controllers\VPFController@altasybajasTLyM')->name('team-leader.store');
+	Route::post('/Modulo/store', 'App\Http\Controllers\VPFController@altasybajasTLyM')->name('Modulo.store');
+	// Ruta para actualizar el estado de un Team Leader
+	Route::patch('/team-leader/{id}/update-status', 'App\Http\Controllers\VPFController@ActualizarEstatus')->name('team-leader.ActualizarEstatus');
+	// Ruta para actualizar el estado de un Módulo
+	Route::patch('/Modulo/{id}/update-status', 'App\Http\Controllers\VPFController@ActualizarEstatusM')->name('Modulo.ActualizarEstatusM');
+
+
 
 });
 

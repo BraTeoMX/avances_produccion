@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Cat_team_leader;
+use App\Cat_modulos;
 use App\Planeacion;
 use App\Planeacion_diaria;
 use App\Datos_planeacion_diaria;
@@ -208,9 +209,61 @@ class VPFController extends Controller
         return back()->with('success', 'Los datos han sido transferidos exitosamente.');
     }
 
+    
+    public function altasybajasTLyM(Request $request)
+    {
+        // Si es un POST request, entonces intentamos agregar un nuevo registro.
+        if ($request->isMethod('post')) {
+            // Aquí decides si estás agregando un Team Leader o un Módulo basado en los inputs enviados.
+            if ($request->has('team_leader')) {
+                // Valida y crea un nuevo Team Leader
+                $validatedData = $request->validate([
+                    'team_leader' => 'required|max:255',
+                ]);
+                $newLeader = new Cat_team_leader($validatedData);
+                $newLeader->estatus = 'A'; // Establece estatus activo por defecto
+                $newLeader->save();
 
+                return back()->with('success', 'Nuevo Team Leader agregado.');
 
+            } elseif ($request->has('Modulo')) {
+                // Valida y crea un nuevo Módulo
+                $validatedData = $request->validate([
+                    'Modulo' => 'required|max:255',
+                ]);
+                $newModulo = new Cat_modulos($validatedData);
+                $newModulo->estatus = 'A'; // Establece estatus activo por defecto
+                $newModulo->save();
 
+                return back()->with('success', 'Nuevo Módulo agregado.');
+            }
+        }
+        $mensaje = "Hola mundo";
+        $teamLeaders = Cat_team_leader::where('estatus', 'A')->get();
+        $modulos = Cat_modulos::where('estatus', 'A')->get();
+
+        return view('VPF.altasybajasTLyM', compact('mensaje','teamLeaders', 'modulos'));
+
+    }
+
+    public function ActualizarEstatus(Request $request, $id) {
+        $teamLeader = Cat_team_leader::findOrFail($id);
+        $teamLeader->estatus = $request->input('estatus', 'B'); // 'B' como valor por defecto
+        $teamLeader->save();
+    
+        // Redirecciona de vuelta con un mensaje de éxito
+        return back()->with('success', 'El Team Leader ha sido dado de baja.');
+    }
+    
+    public function ActualizarEstatusM(Request $request, $id) {
+        $modulo = Cat_modulos::findOrFail($id);
+        $modulo->estatus = $request->input('estatus', 'B'); // 'B' como valor por defecto
+        $modulo->save();
+    
+        // Redirecciona de vuelta con un mensaje de éxito
+        return back()->with('success', 'El módulo ha sido dado de baja.');
+    }
+    
 
 
 }

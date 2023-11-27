@@ -16,38 +16,6 @@
             <p >{{ __('Avance Diario') }}</p>
         </a>
       </li>
-   <!--  <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}" >
-        <a class="nav-link" href="{{ route('home') }}">
-          <i class="material-icons">avanceproduccions</i>
-            <p>{{ __('Avance Semanal') }}</p>
-        </a>
-      </li>-->
-
-     <!--<li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-        <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-          <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
-          <p>{{ __('Catalogos') }}
-            <b class="caret"></b>
-          </p>
-        </a>
-        <div class="collapse hide" id="laravelExample">
-          <ul class="nav">
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('vpf.index') }}">
-                <span class="sidebar-mini">  </span>
-                <span class="sidebar-normal">{{ __('Módulos') }} </span>
-              </a>
-            </li>
-
-           <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('vprh.index') }}">
-                <span class="sidebar-mini">  </span>
-                <span class="sidebar-normal"> {{ __('Team Leader') }} </span>
-              </a>
-            </li>
-          </ul>
-        </div>    
-      </li>-->
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample2" aria-expanded="true">
           <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
@@ -64,12 +32,13 @@
               </a>
             </li>
 
-          <!-- <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('vprh.index') }}">
+            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('vpf.altasybajasTLyM') }}">
                 <span class="sidebar-mini">  </span>
-                <span class="sidebar-normal"> {{ __('Team Leader') }} </span>
+                <span class="sidebar-normal">Altas y bajas </span>
               </a>
-            </li>-->
+            </li>
+
           </ul>
         </div>    
       </li>

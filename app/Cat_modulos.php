@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cat_team_leader extends Model
+class Cat_modulos extends Model
 {
     //
     /**
@@ -12,7 +12,7 @@ class Cat_team_leader extends Model
      *
      * @var string
      */
-    protected $table = 'cat_team_leader';
+    protected $table = 'cat_modulos';
 
     /**
      * The "type" of the auto-incrementing ID.
@@ -27,7 +27,7 @@ class Cat_team_leader extends Model
     protected $fillable = [
         
         'id',
-        'team_leader',
+        'Modulo',
         'estatus',
     ];
 
