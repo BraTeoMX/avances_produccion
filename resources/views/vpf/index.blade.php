@@ -57,6 +57,7 @@
             <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
                     <div class="card-icon">
+                        <h1> HOLA Mundo . </h1>
                         <p>Avance - Diario</p>
                     </div>
                     <p class="card-category"></p>
