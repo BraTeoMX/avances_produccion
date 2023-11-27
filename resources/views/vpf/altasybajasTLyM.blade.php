@@ -64,6 +64,7 @@
 
                     {{-- Columna para Team Leaders --}}
                     <div style="flex: 1; min-width: 50%;">
+                        <h2>Team Leaders</h2>
                         {{-- Formulario para agregar nuevo Team Leader --}}
                         <form action="{{ route('team-leader.store') }}" method="POST" class="form-custom">
                             @csrf
@@ -73,7 +74,7 @@
                 
                         {{-- Tabla de Team Leaders --}}
                         <div>
-                            <h2>Team Leaders</h2>
+                            
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 {{-- Campo de búsqueda --}}
                                 <div>
@@ -114,6 +115,7 @@
                 
                     {{-- Columna para Módulos --}}
                     <div style="flex: 1; min-width: 50%;">
+                        <h2>Módulos</h2>
                         {{-- Formulario para agregar nuevo Módulo --}}
                         <form action="{{ route('Modulo.store') }}" method="POST" class="form-custom">
                             @csrf
@@ -123,11 +125,11 @@
                 
                         {{-- Tabla de Módulos --}}
                         <div>
-                            <h2>Módulos</h2>
+                            
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 {{-- Campo de búsqueda --}}
                                 <div>
-                                    <input type="text" id="searchInput2" class="form-control mb-4" onkeyup="filterTableModulos()" placeholder="Buscar módulo...">
+                                    <input type="text" id="searchInput2" class="form-control mb-4" onkeyup="filterTableModulos()" placeholder="Buscar por módulo...">
                                 </div>
                             </div>
                             <table class="table-custom" id="myTable2">
@@ -224,7 +226,7 @@
         }
 
         .table-custom th {
-            background-color: #4CAF50;
+            background-color: #458ea0;
             color: white;
         }
 
@@ -247,7 +249,7 @@
 
         .form-custom button {
             padding: 10px 20px;
-            background-color: #4CAF50;
+            background-color: #458ea0;
             color: white;
             border: none;
             border-radius: 4px;
@@ -255,7 +257,7 @@
         }
 
         .form-custom button:hover {
-            background-color: #45a049;
+            background-color: #458ea0;
         }
 
         /* Ajustes adicionales para la responsividad */
