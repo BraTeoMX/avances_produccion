@@ -212,30 +212,41 @@ class VPFController extends Controller
     
     public function altasybajasTLyM(Request $request)
     {
-        // Si es un POST request, entonces intentamos agregar un nuevo registro.
+         // Si es un POST request, entonces intentamos agregar un nuevo registro.
         if ($request->isMethod('post')) {
-            // Aquí decides si estás agregando un Team Leader o un Módulo basado en los inputs enviados.
-            if ($request->has('team_leader')) {
-                // Valida y crea un nuevo Team Leader
-                $validatedData = $request->validate([
-                    'team_leader' => 'required|max:255',
-                ]);
-                $newLeader = new Cat_team_leader($validatedData);
-                $newLeader->estatus = 'A'; // Establece estatus activo por defecto
-                $newLeader->save();
+            // Validación básica
+            $request->validate([
+                'team_leader' => 'sometimes|required|max:255',
+                'Modulo' => 'sometimes|required|max:255',
+            ]);
 
-                return back()->with('success', 'Nuevo Team Leader agregado.');
-
-            } elseif ($request->has('Modulo')) {
-                // Valida y crea un nuevo Módulo
-                $validatedData = $request->validate([
-                    'Modulo' => 'required|max:255',
-                ]);
-                $newModulo = new Cat_modulos($validatedData);
-                $newModulo->estatus = 'A'; // Establece estatus activo por defecto
-                $newModulo->save();
-
-                return back()->with('success', 'Nuevo Módulo agregado.');
+            // Agregar un Team Leader
+            if ($request->input('team_leader')) {
+                // Buscar si ya existe un Team Leader con ese nombre
+                $existingLeader = Cat_team_leader::where('team_leader', $request->input('team_leader'))->first();
+                if ($existingLeader) {
+                    // Si existe, regresa con un mensaje de error
+                    return back()->with('error', 'El Team Leader ya existe.');
+                } else {
+                    // Si no existe, crea uno nuevo
+                    $newLeader = new Cat_team_leader(['team_leader' => $request->input('team_leader'), 'estatus' => 'A']);
+                    $newLeader->save();
+                    return back()->with('success', 'Nuevo Team Leader agregado.');
+                }
+            }
+            // Agregar un Módulo
+            elseif ($request->input('Modulo')) {
+                // Buscar si ya existe un Módulo con ese nombre
+                $existingModulo = Cat_modulos::where('Modulo', $request->input('Modulo'))->first();
+                if ($existingModulo) {
+                    // Si existe, regresa con un mensaje de error
+                    return back()->with('error', 'El Módulo ya existe.');
+                } else {
+                    // Si no existe, crea uno nuevo
+                    $newModulo = new Cat_modulos(['Modulo' => $request->input('Modulo'), 'estatus' => 'A']);
+                    $newModulo->save();
+                    return back()->with('success', 'Nuevo Módulo agregado.');
+                }
             }
         }
         $mensaje = "Hola mundo";

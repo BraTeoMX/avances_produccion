@@ -53,6 +53,22 @@
 @section('content')
     <div class="content">
         <div class="container-fluid">
+            {{-- ... dentro de tu vista ... --}}
+
+            @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+            @endif
+
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+
+            {{-- ... el resto de tu vista ... --}}
+
             <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
                     <div class="card-icon">
