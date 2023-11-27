@@ -72,7 +72,7 @@
             <div class="card card-stats">
                 <div class="card-header card-header-tabs card-header-info">
                     <div class="nav-tabs-navigation">
-                      <h1> Altas y Bajas para Team Leaders y Modulos </h1>
+                      <h2> Altas y Bajas para Team Leaders y Modulos </h2>
                     </div>
                   </div>
                 <br>
