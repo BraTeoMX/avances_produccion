@@ -59,14 +59,13 @@
                         <h1> Altas y Bajas para Team Leaders y Modulos </h1>
                     </div>
                 </div>
-                {{$mensaje}}
                 <br>
                 <div style="display: flex; flex-wrap: wrap;">
 
                     {{-- Columna para Team Leaders --}}
                     <div style="flex: 1; min-width: 50%;">
                         {{-- Formulario para agregar nuevo Team Leader --}}
-                        <form action="{{ route('team-leader.store') }}" method="POST">
+                        <form action="{{ route('team-leader.store') }}" method="POST" class="form-custom">
                             @csrf
                             <input type="text" name="team_leader" placeholder="Nombre del Team Leader">
                             <button type="submit">Agregar Team Leader</button>
@@ -78,10 +77,10 @@
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 {{-- Campo de búsqueda --}}
                                 <div>
-                                    <input type="text" id="searchInput1" onkeyup="filterTableTeamLeaders()" placeholder="Buscar por Team Leader">
+                                    <input type="text" id="searchInput1" class="form-control mb-4" onkeyup="filterTableTeamLeaders()" placeholder="Buscar por Team Leader">
                                 </div>
                             </div>
-                            <table BORDER id="myTable1">
+                            <table class="table-custom" id="myTable1">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -116,7 +115,7 @@
                     {{-- Columna para Módulos --}}
                     <div style="flex: 1; min-width: 50%;">
                         {{-- Formulario para agregar nuevo Módulo --}}
-                        <form action="{{ route('Modulo.store') }}" method="POST">
+                        <form action="{{ route('Modulo.store') }}" method="POST" class="form-custom">
                             @csrf
                             <input type="text" name="Modulo" placeholder="Nombre del Módulo">
                             <button type="submit">Agregar Módulo</button>
@@ -128,10 +127,10 @@
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 {{-- Campo de búsqueda --}}
                                 <div>
-                                    <input type="text" id="searchInput2" onkeyup="filterTableModulos()" placeholder="Buscar módulo...">
+                                    <input type="text" id="searchInput2" class="form-control mb-4" onkeyup="filterTableModulos()" placeholder="Buscar módulo...">
                                 </div>
                             </div>
-                            <table BORDER id="myTable2">
+                            <table class="table-custom" id="myTable2">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -211,6 +210,62 @@
 
        
     </script>
-    
+    <style>
+        /* Estilos para las tablas */
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-custom th, .table-custom td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table-custom th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .table-custom tr:nth-child(even){background-color: #f2f2f2;}
+
+        .table-custom tr:hover {background-color: #ddd;}
+
+        /* Estilos para los formularios */
+        .form-custom {
+            margin-bottom: 20px;
+        }
+
+        .form-custom input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-custom button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-custom button:hover {
+            background-color: #45a049;
+        }
+
+        /* Ajustes adicionales para la responsividad */
+        @media (max-width: 600px) {
+            .form-custom input[type="text"] {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+    </style>
 @endsection
 
