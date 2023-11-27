@@ -54,7 +54,6 @@
     <div class="content">
         <div class="container-fluid">
             {{-- ... dentro de tu vista ... --}}
-
             @if(session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
@@ -66,15 +65,18 @@
                 {{ session('success') }}
             </div>
             @endif
-
-            {{-- ... el resto de tu vista ... --}}
-
-            <div class="card card-stats">
-                <div class="card-header card-header-info card-header-icon">
-                    <div class="card-icon">
-                        <h1> Altas y Bajas para Team Leaders y Modulos </h1>
-                    </div>
+            @if(session('status')) {{-- A menudo utilizado para mensajes de estado genéricos --}}
+                <div class="alert alert-secondary">
+                    {{ session('status') }}
                 </div>
+            @endif
+            {{-- ... el resto de tu vista ... --}}
+            <div class="card card-stats">
+                <div class="card-header card-header-tabs card-header-info">
+                    <div class="nav-tabs-navigation">
+                      <h1> Altas y Bajas para Team Leaders y Modulos </h1>
+                    </div>
+                  </div>
                 <br>
                 <div style="display: flex; flex-wrap: wrap;">
 

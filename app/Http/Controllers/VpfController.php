@@ -267,7 +267,7 @@ class VPFController extends Controller
     
         $mensaje = $teamLeader->estatus == 'A' ? 'El Team Leader ha sido dado de alta.' : 'El Team Leader ha sido dado de baja.';
         
-        return back()->with('success', $mensaje);
+        return back()->with('status', $mensaje);
     }
     
     public function ActualizarEstatusM(Request $request, $id) {
@@ -281,7 +281,7 @@ class VPFController extends Controller
         // Mensaje de éxito personalizado basado en la acción realizada
         $mensaje = $nuevoEstatus == 'A' ? 'El módulo ha sido dado de alta.' : 'El módulo ha sido dado de baja.';
     
-        return back()->with('success', $mensaje);
+        return back()->with('status', $mensaje);
 }
     
 
