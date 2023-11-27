@@ -47,8 +47,6 @@
       border-color:#d70206;
   }
   
-  
-
 </style>
 @section('content')
     <div class="content">
