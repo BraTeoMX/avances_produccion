@@ -81,7 +81,7 @@
                                     <input type="text" id="searchInput1" class="form-control mb-4" onkeyup="filterTableTeamLeaders()" placeholder="Buscar por Team Leader">
                                 </div>
                             </div>
-                            <table class="table-custom" id="myTable1">
+                            <table class="table-custom table-leaders" id="myTable1">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -97,14 +97,17 @@
                                             <td>{{ $leader->team_leader }}</td>
                                             <td>{{ $leader->estatus }}</td>
                                             <td>
-                                                @if($leader->estatus == 'A')
                                                 <form action="{{ route('team-leader.ActualizarEstatus', $leader->id) }}" method="POST">
                                                     @csrf
-                                                    @method('PATCH') {{-- Si estás usando el método PATCH en tu ruta --}}
-                                                    <input type="hidden" name="estatus" value="B"> {{-- Establece el nuevo estado que quieres --}}
-                                                    <button type="submit">Dar de Baja</button>
+                                                    @method('PATCH')
+                                                    @if($leader->estatus == 'A')
+                                                        <input type="hidden" name="estatus" value="B">
+                                                        <button class="btn-secondary" type="submit">Dar de Baja</button>
+                                                    @else
+                                                        <input type="hidden" name="estatus" value="A">
+                                                        <button class="btn-secondary" type="submit">Dar de Alta</button>
+                                                    @endif
                                                 </form>
-                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -132,7 +135,7 @@
                                     <input type="text" id="searchInput2" class="form-control mb-4" onkeyup="filterTableModulos()" placeholder="Buscar por módulo...">
                                 </div>
                             </div>
-                            <table class="table-custom" id="myTable2">
+                            <table class="table-custom table-modulos" id="myTable2">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -148,14 +151,17 @@
                                             <td>{{ $modulo->Modulo }}</td>
                                             <td>{{ $modulo->estatus }}</td>
                                             <td>
-                                                @if($modulo->estatus == 'A')
-                                                    <form action="{{ route('Modulo.ActualizarEstatusM', $modulo->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('PATCH') {{-- Si estás usando el método PATCH en tu ruta --}}
-                                                        <input type="hidden" name="estatus" value="B"> {{-- Establece el nuevo estado que quieres --}}
-                                                        <button type="submit">Dar de Baja</button>
-                                                    </form>
-                                                @endif
+                                                <form action="{{ route('Modulo.ActualizarEstatusM', $modulo->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    @if($modulo->estatus == 'A')
+                                                        <input type="hidden" name="estatus" value="B">
+                                                        <button class="btn-secondary" type="submit">Dar de Baja</button>
+                                                    @else
+                                                        <input type="hidden" name="estatus" value="A">
+                                                        <button class="btn-secondary" type="submit">Dar de Alta</button>
+                                                    @endif
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -258,6 +264,41 @@
 
         .form-custom button:hover {
             background-color: #458ea0;
+        }
+
+        /* Estilos específicos para la tabla de Team Leaders */
+        .table-leaders th {
+            background-color: #458ea0;
+            color: white;
+        }
+
+        .table-leaders button {
+            background-color: #458ea0;
+            /* otros estilos para el botón si es necesario */
+        }
+
+        .table-leaders button:hover {
+            background-color: #306872; /* Un tono más oscuro para el hover */
+        }
+
+        /* Estilos específicos para la tabla de Módulos */
+        .table-modulos th {
+            background-color: #572c69; /* Un gris oscuro para diferenciar */
+            color: white;
+        }
+
+        .table-modulos button {
+            background-color: #572c69;
+            /* otros estilos para el botón si es necesario */
+        }
+
+        .table-modulos button:hover {
+            background-color: #5a6268; /* Un tono más oscuro para el hover */
+        }
+
+        /* Estilos para los formularios se mantienen igual */
+        .form-custom {
+            /* ... */
         }
 
         /* Ajustes adicionales para la responsividad */

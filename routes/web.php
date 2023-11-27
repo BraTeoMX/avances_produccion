@@ -102,7 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/transferir-datos', 'App\Http\Controllers\VPFController@transferirDatosDiarios')->name('transferir.datos');
 
 	Route::get('/altasybajasTLyM', 'App\Http\Controllers\VPFController@altasybajasTLyM')->name('vpf.altasybajasTLyM');
-	// Asumiendo que usas resource controllers o algo similar
+	// Ruta para mostrar los datos de las tablas TeamLeader y Modulos
 	Route::post('/team-leader/store', 'App\Http\Controllers\VPFController@altasybajasTLyM')->name('team-leader.store');
 	Route::post('/Modulo/store', 'App\Http\Controllers\VPFController@altasybajasTLyM')->name('Modulo.store');
 	// Ruta para actualizar el estado de un Team Leader

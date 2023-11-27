@@ -239,30 +239,39 @@ class VPFController extends Controller
             }
         }
         $mensaje = "Hola mundo";
+        $teamLeaders = Cat_team_leader::all();
+        $modulos = Cat_modulos::all();
+        /*
         $teamLeaders = Cat_team_leader::where('estatus', 'A')->get();
         $modulos = Cat_modulos::where('estatus', 'A')->get();
-
+        */
         return view('VPF.altasybajasTLyM', compact('mensaje','teamLeaders', 'modulos'));
 
     }
 
     public function ActualizarEstatus(Request $request, $id) {
         $teamLeader = Cat_team_leader::findOrFail($id);
-        $teamLeader->estatus = $request->input('estatus', 'B'); // 'B' como valor por defecto
+        $teamLeader->estatus = $request->input('estatus', 'A'); // Asumiendo 'A' como valor por defecto para "Dar de Alta"
         $teamLeader->save();
     
-        // Redirecciona de vuelta con un mensaje de éxito
-        return back()->with('success', 'El Team Leader ha sido dado de baja.');
+        $mensaje = $teamLeader->estatus == 'A' ? 'El Team Leader ha sido dado de alta.' : 'El Team Leader ha sido dado de baja.';
+        
+        return back()->with('success', $mensaje);
     }
     
     public function ActualizarEstatusM(Request $request, $id) {
         $modulo = Cat_modulos::findOrFail($id);
-        $modulo->estatus = $request->input('estatus', 'B'); // 'B' como valor por defecto
+
+        // Cambia el estatus basado en el valor recibido del formulario
+        $nuevoEstatus = $request->input('estatus');
+        $modulo->estatus = $nuevoEstatus;
         $modulo->save();
+
+        // Mensaje de éxito personalizado basado en la acción realizada
+        $mensaje = $nuevoEstatus == 'A' ? 'El módulo ha sido dado de alta.' : 'El módulo ha sido dado de baja.';
     
-        // Redirecciona de vuelta con un mensaje de éxito
-        return back()->with('success', 'El módulo ha sido dado de baja.');
-    }
+        return back()->with('success', $mensaje);
+}
     
 
 
