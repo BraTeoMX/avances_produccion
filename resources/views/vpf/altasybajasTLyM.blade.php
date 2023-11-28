@@ -72,10 +72,12 @@
             <div class="card card-stats">
                 <div class="card-header card-header-tabs card-header-info">
                     <div class="nav-tabs-navigation">
-                      <h2> Altas y Bajas para Team Leaders y Modulos </h2>
+                      <h2> Altas y Bajas: Team Leaders y Modulos </h2>
                     </div>
                   </div>
                 <br>
+                <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2023/09/dibujo-chopper-realizado-eiichiro-oda-anunciar-temporada-2-one-piece-3139812.jpg" alt="Chopper">
+
                 <div style="display: flex; flex-wrap: wrap;">
 
                     {{-- Columna para Team Leaders --}}
