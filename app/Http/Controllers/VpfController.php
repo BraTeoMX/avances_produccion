@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Cat_team_leader;
 use App\Cat_modulos;
+use App\TeamModulo;
 use App\Planeacion;
 use App\Planeacion_diaria;
 use App\Datos_planeacion_diaria;
@@ -147,7 +148,7 @@ class VPFController extends Controller
             ]);
         }
 
-        // Opcional: Limpiar la tabla `planeacion_diaria`
+        // Opcional: Limpiar la tabla `planeacion_diaria` pero en este caso no es general y lo hace para los campos establecidos
         Planeacion_diaria::query()
         ->update([
             'meta_8' => null,
@@ -285,5 +286,21 @@ class VPFController extends Controller
 }
     
 
+
+    public function tablaTLyM(Request $request)
+    {
+       
+        $mensaje = "Hola mundo";
+        $teamLeaders = Cat_team_leader::all();
+        $modulos = Cat_modulos::all();
+        // Obtiene todos los registros de TeamModulo y sus relaciones
+        $teamModulos = TeamModulo::with('catTeamLeader', 'catModulo')->get();
+
+   
+
+        return view('VPF.tablaTLyM', compact('mensaje', 'teamModulos'));
+
+    }
+    
 
 }

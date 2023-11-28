@@ -13,6 +13,11 @@ class Cat_team_leader extends Model
      * @var string
      */
     protected $table = 'cat_team_leader';
+    // En el modelo Cat_team_leader
+    public function teamModulos()
+    {
+        return $this->hasMany(TeamModulo::class, 'team_leader', 'id');
+    }
 
     /**
      * The "type" of the auto-incrementing ID.

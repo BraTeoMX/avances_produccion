@@ -38,7 +38,12 @@
                 <span class="sidebar-normal">Altas y bajas </span>
               </a>
             </li>
-
+            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('vpf.tablaTLyM') }}">
+                <span class="sidebar-mini">  </span>
+                <span class="sidebar-normal">Tabla TL y M </span>
+              </a>
+            </li>
           </ul>
         </div>    
       </li>

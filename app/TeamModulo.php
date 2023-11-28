@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cat_modulos extends Model
+class TeamModulo extends Model
 {
     //
     /**
@@ -12,10 +12,17 @@ class Cat_modulos extends Model
      *
      * @var string
      */
-    // En el modelo Cat_modulos
-    public function teamModulos()
+
+    protected $table = 'team_modulo';
+    // En el modelo TeamModulo
+    public function catTeamLeader()
     {
-        return $this->hasMany(TeamModulo::class, 'modulo', 'id');
+        return $this->belongsTo(Cat_team_leader::class, 'team_leader', 'id');
+    }
+
+    public function catModulo()
+    {
+        return $this->belongsTo(Cat_modulos::class, 'modulo', 'id');
     }
 
     /**
@@ -31,8 +38,8 @@ class Cat_modulos extends Model
     protected $fillable = [
         
         'id',
-        'Modulo',
-        'estatus',
+        'team_leader',
+        'modulo',
     ];
 
      /**
