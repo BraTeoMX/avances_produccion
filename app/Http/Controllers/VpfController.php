@@ -295,8 +295,7 @@ class VPFController extends Controller
         $modulos = Cat_modulos::all();
         // Obtiene todos los registros de TeamModulo y sus relaciones
         $teamModulos = TeamModulo::with('catTeamLeader', 'catModulo')->get();
-
-   
+        dd($teamModulos);   
 
         return view('VPF.tablaTLyM', compact('mensaje', 'teamModulos'));
 

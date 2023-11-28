@@ -17,12 +17,12 @@ class TeamModulo extends Model
     // En el modelo TeamModulo
     public function catTeamLeader()
     {
-        return $this->belongsTo(Cat_team_leader::class, 'team_leader', 'id');
+        return $this->belongsTo(Cat_team_leader::class, 'id', 'id');
     }
 
     public function catModulo()
     {
-        return $this->belongsTo(Cat_modulos::class, 'modulo', 'id');
+        return $this->belongsTo(Cat_modulos::class, 'id', 'id');
     }
 
     /**
