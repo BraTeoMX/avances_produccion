@@ -16,13 +16,16 @@ class TeamModulo extends Model
     protected $table = 'team_modulo';
     // En el modelo TeamModulo
     public function catTeamLeader()
-    {
-        return $this->belongsTo(Cat_team_leader::class, 'id', 'id');
+    {   
+                                                // 'team_leader' es la columna de la tabla "team_modulo" donde el valor que tiene se vincula con
+                                                // 'id' que es la columna de la tabla "cat_team_leader" si ambos valores existen, entonces se mostrara 
+                                                // en este caso el nombre asignado al valor numerico
+        return $this->belongsTo(Cat_team_leader::class, 'team_leader', 'id');
     }
 
     public function catModulo()
     {
-        return $this->belongsTo(Cat_modulos::class, 'id', 'id');
+        return $this->belongsTo(Cat_modulos::class, 'modulo', 'id');
     }
 
     /**

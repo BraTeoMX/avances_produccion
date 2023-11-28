@@ -76,8 +76,6 @@
                     </div>
                   </div>
                 <br>
-                <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2023/09/dibujo-chopper-realizado-eiichiro-oda-anunciar-temporada-2-one-piece-3139812.jpg" alt="Chopper">
-
                 <div style="display: flex; flex-wrap: wrap;">
 
                     {{-- Columna para Team Leaders --}}
@@ -113,7 +111,15 @@
                                         <tr>
                                             <td>{{ $leader->id }}</td>
                                             <td>{{ $leader->team_leader }}</td>
-                                            <td>{{ $leader->estatus }}</td>
+                                            <td>
+                                                @if ($leader->estatus == 'A')
+                                                    ALTA
+                                                @elseif ($leader->estatus == 'B')
+                                                    BAJA
+                                                @else
+                                                    {{ $leader->estatus }}
+                                                @endif
+                                            </td>
                                             <td>
                                                 <form action="{{ route('team-leader.ActualizarEstatus', $leader->id) }}" method="POST">
                                                     @csrf
@@ -167,7 +173,15 @@
                                         <tr>
                                             <td>{{ $modulo->id }}</td>
                                             <td>{{ $modulo->Modulo }}</td>
-                                            <td>{{ $modulo->estatus }}</td>
+                                            <td>
+                                                @if ($leader->estatus == 'A')
+                                                    ALTA
+                                                @elseif ($leader->estatus == 'B')
+                                                    BAJA
+                                                @else
+                                                    {{ $leader->estatus }}
+                                                @endif
+                                            </td>
                                             <td>
                                                 <form action="{{ route('Modulo.ActualizarEstatusM', $modulo->id) }}" method="POST">
                                                     @csrf

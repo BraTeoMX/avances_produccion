@@ -294,9 +294,17 @@ class VPFController extends Controller
         $teamLeaders = Cat_team_leader::all();
         $modulos = Cat_modulos::all();
         // Obtiene todos los registros de TeamModulo y sus relaciones
-        $teamModulos = TeamModulo::with('catTeamLeader', 'catModulo')->get();
-        dd($teamModulos);   
-
+        //$teamModulos = TeamModulo::with('catTeamLeader', 'catModulo')->get();
+        $teamModulos = TeamModulo::with(['catTeamLeader' => function ($query) {
+            $query->where('estatus', 'A');
+        }, 'catModulo' => function ($query) {
+            $query->where('estatus', 'A');
+        }])->whereHas('catTeamLeader', function ($query) {
+            $query->where('estatus', 'A');
+        })->whereHas('catModulo', function ($query) {
+            $query->where('estatus', 'A');
+        })->get();
+        
         return view('VPF.tablaTLyM', compact('mensaje', 'teamModulos'));
 
     }
