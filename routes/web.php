@@ -103,6 +103,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/altasybajasTLyM', 'App\Http\Controllers\VPFController@altasybajasTLyM')->name('vpf.altasybajasTLyM');
 	Route::get('/tablaTLyM', 'App\Http\Controllers\VPFController@tablaTLyM')->name('vpf.tablaTLyM');
+	Route::get('/modificacionTablaTLyM', 'App\Http\Controllers\VPFController@showModificacionTablaTLyM')->name('vpf.modificacionTablaTLyM');
 	// Ruta para mostrar los datos de las tablas TeamLeader y Modulos
 	Route::post('/team-leader/store', 'App\Http\Controllers\VPFController@altasybajasTLyM')->name('team-leader.store');
 	Route::post('/Modulo/store', 'App\Http\Controllers\VPFController@altasybajasTLyM')->name('Modulo.store');
@@ -111,6 +112,8 @@ Route::group(['middleware' => 'auth'], function () {
 	// Ruta para actualizar el estado de un Módulo
 	Route::patch('/Modulo/{id}/update-status', 'App\Http\Controllers\VPFController@ActualizarEstatusM')->name('Modulo.ActualizarEstatusM');
 	Route::post('/asignar-modulos', 'App\Http\Controllers\VPFController@asignarModulos')->name('asignar.modulos');
+	// Ruta para modificar datos de team leader y modulos en la tabla "team_modulo"
+	Route::post('/team_modulo/modificar', 'App\Http\Controllers\VPFController@modificacionTablaTLyM')->name('team_modulo.modificar');
 
 });
 

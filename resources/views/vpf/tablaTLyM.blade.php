@@ -76,7 +76,7 @@
                     </div>
                   </div>
                 <br>
-                {{$mensaje}}
+                {{--$mensaje--}}
                     {{-- Campo de búsqueda --}}
                     <div>
                         <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Buscar por nombre o módulo...">
