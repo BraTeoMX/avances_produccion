@@ -115,5 +115,9 @@ Route::group(['middleware' => 'auth'], function () {
 	// Ruta para modificar datos de team leader y modulos en la tabla "team_modulo"
 	Route::post('/team_modulo/modificar', 'App\Http\Controllers\VPFController@modificacionTablaTLyM')->name('team_modulo.modificar');
 
+
+	//seccion para pruebas, asi se llamara la carpeta 
+	Route::get('/sorteo', 'App\Http\Controllers\pruebaController@sorteo')->name('prueba.sorteo');
+
 });
 

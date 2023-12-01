@@ -53,6 +53,13 @@
           </ul>
         </div>    
       </li>
+
+      <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('prueba.sorteo') }}">
+          <span class="sidebar-mini">  </span>
+          <span class="sidebar-normal">Sorteo </span>
+        </a>
+      </li>
     </ul>
   </div>
 </div>
