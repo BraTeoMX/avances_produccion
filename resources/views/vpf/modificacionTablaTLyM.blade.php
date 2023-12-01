@@ -72,33 +72,36 @@
             <div class="card card-stats">
                 <div class="card-header card-header-tabs card-header-info">
                     <div class="nav-tabs-navigation">
-                      <h2> tabla para Team Leaders y Modulos </h2>
+                      <h2> Modificacion para: Team Leaders y Modulos </h2>
                     </div>
                   </div>
                 <br>
                 {{$mensaje}}
-                    {{-- Campo de búsqueda --}}
-                    <div>
-                        <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Buscar por nombre o módulo...">
-                    </div>
-                <table BORDER id="myTable">
-                    <thead>
-                        <tr>
-                            <th>ID </th>
-                            <th>Team Leader</th>
-                            <th>Módulo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($teamModulos as $teamModulo)
-                            <tr>
-                                <td>{{ $teamModulo->id }}</td></td>
-                                <td>{{ optional($teamModulo->catTeamLeader)->team_leader }}</td>
-                                <td>{{ optional($teamModulo->catModulo)->Modulo }}</td>
-                            </tr>
+                <form action="{{ route('team_modulo.modificar') }}" method="POST">
+                    @csrf
+                
+                    {{-- Select para Team Leaders --}}
+                    <label for="team_leader">Team Leader:</label>
+                    <select name="team_leader_id" id="team_leader">
+                        @foreach ($teamLeaders as $leader)
+                            <option value="{{ $leader->id }}">
+                                {{ $leader->nombre }} {{-- Asumiendo que 'nombre' es el campo con el nombre del líder --}}
+                            </option>
                         @endforeach
-                    </tbody>
-                </table>
+                    </select>
+                
+                    {{-- Select para Módulos --}}
+                    <label for="modulo">Módulo:</label>
+                    <select name="modulo_id[]" id="modulo" multiple>
+                        @foreach ($modulos as $modulo)
+                            <option value="{{ $modulo->id }}">
+                                {{ $modulo->nombre }} {{-- Asumiendo que 'nombre' es el campo con el nombre del módulo --}}
+                            </option>
+                        @endforeach
+                    </select>
+                
+                    <button type="submit">Actualizar</button>
+                </form>
             </div>
         </div>
     </div>

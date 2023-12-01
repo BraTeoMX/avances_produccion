@@ -72,33 +72,12 @@
             <div class="card card-stats">
                 <div class="card-header card-header-tabs card-header-info">
                     <div class="nav-tabs-navigation">
-                      <h2> tabla para Team Leaders y Modulos </h2>
+                      <h2> Seccion para sorteo </h2>
                     </div>
                   </div>
                 <br>
-                {{--$mensaje--}}
-                    {{-- Campo de búsqueda --}}
-                    <div>
-                        <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Buscar por nombre o módulo...">
-                    </div>
-                <table BORDER id="myTable">
-                    <thead>
-                        <tr>
-                            <th>ID </th>
-                            <th>Team Leader</th>
-                            <th>Módulo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($teamModulos as $teamModulo)
-                            <tr>
-                                <td>{{ $teamModulo->id }}</td></td>
-                                <td>{{ optional($teamModulo->catTeamLeader)->team_leader }}</td>
-                                <td>{{ optional($teamModulo->catModulo)->Modulo }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                {{$mensaje}}
+                
             </div>
         </div>
     </div>

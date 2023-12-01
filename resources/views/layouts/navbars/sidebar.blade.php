@@ -39,6 +39,12 @@
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('vpf.modificacionTablaTLyM') }}">
+                <span class="sidebar-mini">  </span>
+                <span class="sidebar-normal"> Modificacion TL y M </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('vpf.tablaTLyM') }}">
                 <span class="sidebar-mini">  </span>
                 <span class="sidebar-normal">Tabla TL y M </span>
@@ -46,6 +52,13 @@
             </li>
           </ul>
         </div>    
+      </li>
+
+      <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('prueba.sorteo') }}">
+          <span class="sidebar-mini">  </span>
+          <span class="sidebar-normal">Sorteo </span>
+        </a>
       </li>
     </ul>
   </div>

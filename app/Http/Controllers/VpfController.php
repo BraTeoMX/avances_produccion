@@ -310,4 +310,50 @@ class VPFController extends Controller
     }
     
 
+    
+    public function modificacionTablaTLyM(Request $request)
+    {
+       
+        $mensaje = "Hola mundo";
+        // Validación básica, ajusta según sea necesario
+            
+        
+        return view('VPF.modificacionTablaTLyM', compact('mensaje', 'teamModulos', 'modulos'));
+
+    }
+
+    public function showModificacionTablaTLyM(Request $request)
+    {
+        $teamLeaders = Cat_team_leader::all();
+        $modulos = Cat_modulos::all();
+        $request->validate([
+            'team_leader' => 'required|exists:cat_team_leaders,id',
+            'modulo' => 'required|exists:cat_modulos,id',
+        ]);
+
+        
+        // Asumiendo que tienes un identificador para saber cuál TeamModulo actualizar
+        $teamModuloId = $request->input('id'); // Asegúrate de tener este input en tu formulario
+        $teamModulo = TeamModulo::findOrFail($teamModuloId);
+
+        // Actualizar el team leader
+        $teamModulo->team_leader_id = $request->input('team_leader');
+        
+        // Actualizar los módulos, si es una relación muchos a muchos
+        $teamModulo->modulos()->sync($request->input('modulo'));
+
+        $teamModulo->save();
+
+        // Redirigir de vuelta a la vista con un mensaje de éxito
+        return redirect()->back()->with('success', 'Actualización realizada con éxito.');
+        
+
+        $teamLeaders = Cat_team_leader::all();
+        $modulos = Cat_modulos::all();
+        
+        return view('VPF.modificacionTablaTLyM', compact('teamLeaders', 'modulos'));
+    }
+
+
+
 }
