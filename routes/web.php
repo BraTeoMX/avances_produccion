@@ -118,6 +118,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//seccion para pruebas, asi se llamara la carpeta 
 	Route::get('/sorteo', 'App\Http\Controllers\pruebaController@sorteo')->name('prueba.sorteo');
+	Route::get('/resultadoSorteo', 'App\Http\Controllers\pruebaController@resultadoSorteo')->name('prueba.resultadoSorteo');
+	Route::post('/registroSorteo', 'App\Http\Controllers\PruebaController@registroSorteo')->name('registroSorteo');
 
 });
 

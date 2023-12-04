@@ -60,6 +60,12 @@
           <span class="sidebar-normal">Sorteo </span>
         </a>
       </li>
+      <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('prueba.resultadoSorteo') }}">
+          <span class="sidebar-mini">  </span>
+          <span class="sidebar-normal">Resultado Sorteo </span>
+        </a>
+      </li>
     </ul>
   </div>
 </div>
